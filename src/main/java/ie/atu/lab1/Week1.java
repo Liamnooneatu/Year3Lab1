@@ -25,28 +25,33 @@ public class Week1 {
     int num3;
 
     @GetMapping("/calculate")
-    public int calculate(@RequestParam int num1, @RequestParam int num2, @RequestParam String operation) {
+    public String calculate(@RequestParam int num1, @RequestParam int num2, @RequestParam String operation) {
 
 
         switch (operation) {
             case "multiply":
-                return operation ": " + "Total: " + (num1 * num2);
-            break;
+                return "operation: " + operation + "Total: " + (num1 * num2);
+
 
             case "subtract":
-                return operation ": " + "Total: " + (num1 - num2);
-            break;
+                return "operation: " + operation + "Total: " + (num1 - num2);
+
 
             case "add":
-                return operation ": " + "Total: " + (num1 + num2);
-            break;
+                return "operation: " + operation + "Total: " + (num1 + num2);
+
 
             case "divide":
-                return operation ": " + "Total: " + (num1/num2);
-                }
+                if(num2 ==0)
+                    return "cannot divide by 0";
+                return "operation: " + operation + "Total: " + (num1 / num2);
 
         }
+        return operation;
     }
+
+}
+
 
 
 
